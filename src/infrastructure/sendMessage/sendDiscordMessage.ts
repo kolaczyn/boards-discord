@@ -22,7 +22,6 @@ export const sendDiscordMessage: ISendMessage = async (message: AppMessage) => {
   const webhookClient = new WebhookClient({ id, token })
 
   await webhookClient.send({
-    content: 'Nowy release',
     embeds: [createMessage(message)],
   })
 }

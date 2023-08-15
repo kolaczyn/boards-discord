@@ -38,4 +38,4 @@ jobs:
         with:
           version: 7
       - run: pnpm install
-      - run: pnpm start -m "Latest release on boards-discord" -r "https://github.com/kolaczyn/boards-discord"
+      - run: pnpm start -m "Latest release on boards-discord" -r "https://github.com/kolaczyn/boards-discord" -c "#5865F2"
