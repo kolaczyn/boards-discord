@@ -3,15 +3,13 @@ dotenv.config()
 
 import { program } from 'commander'
 import { sendDiscordMessage } from './infrastructure/sendMessage/sendDiscordMessage'
-import { fetchPromotions } from './infrastructure/fetchPromotions/fetchPromotions'
-import { getGamesColor } from './infrastructure/getGamesColors'
 import { sendConsoleMessage } from './infrastructure/sendMessage/sendConsoleMessage'
-import { app } from './app/app'
+import { AppMessage } from './types'
 
 program
-  .name('Xbox Promotion Checker')
+  .name('Bot release discord bot')
   .description(
-    'Discord bot checking Xbox store for promotions every now and then'
+    'A bot that sends a message about a new GitHub release to a Discord channel'
   )
   .option(
     '--dry-run',
@@ -26,11 +24,11 @@ const main = async () => {
   const isDryRun = !!options.dryRun
   const sendMessage = isDryRun ? sendConsoleMessage : sendDiscordMessage
 
-  await app({
-    sendMessage,
-    gamesStrategy: getGamesColor,
-    getGames: fetchPromotions,
-  })
+  const message: AppMessage = {
+    message: 'Hello world,',
+    color: '#FF0000',
+  }
+  await sendMessage(message)
 }
 
 main()

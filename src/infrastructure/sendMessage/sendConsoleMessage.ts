@@ -1,11 +1,9 @@
-import { createMessage } from '../../domain/createMessage/createMessage'
-import { GameInfoWithColor } from '../../types'
-import { SendMessage } from './types'
+import { AppMessage } from '../../types'
+import { ISendMessage } from './sendMessage'
 
-export const sendConsoleMessage: SendMessage = (
-  games: GameInfoWithColor[]
+export const sendConsoleMessage: ISendMessage = (
+  message: AppMessage
 ): Promise<void> => {
-  const messages = games.map(createMessage).map(x => x.data)
-  console.table(messages)
+  console.table(message)
   return Promise.resolve()
 }

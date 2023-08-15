@@ -1,13 +1,10 @@
 import { EmbedBuilder } from 'discord.js'
-import { GameInfoWithColor } from '../../types'
-import { getDescription } from './getDescription'
+import { AppMessage } from '../../types'
 
-export const createMessage = (game: GameInfoWithColor) => {
+export const createMessage = ({ message, color }: AppMessage) => {
   return new EmbedBuilder()
-    .setTitle(game.title)
-    .setDescription(
-      getDescription({ currPrice: game.currPrice, prevPrice: game.prevPrice })
-    )
-    .setURL(game.url)
-    .setColor(game.color)
+    .setTitle(message)
+    .setDescription('Hello world')
+    .setURL('https://boards.kolaczyn.com')
+    .setColor(color)
 }

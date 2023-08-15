@@ -133,3 +133,5 @@ dist
 lib
 .pnpm-store
 .DS_STORE
+.env
+.idea/
