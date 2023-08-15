@@ -1,34 +1,39 @@
 import dotenv from 'dotenv'
+
 dotenv.config()
 
 import { program } from 'commander'
 import { sendDiscordMessage } from './infrastructure/sendMessage/sendDiscordMessage'
 import { sendConsoleMessage } from './infrastructure/sendMessage/sendConsoleMessage'
-import { AppMessage } from './types'
+import { AppArgs, AppMessage } from './types'
+import { ColorResolvable } from 'discord.js'
 
 program
   .name('Bot release discord bot')
   .description(
     'A bot that sends a message about a new GitHub release to a Discord channel'
   )
-  .option(
-    '--dry-run',
-    "If enabled, a list of games will be printed to the terminal and a Discord message won't be sent",
+  .requiredOption('-r, --repo-url <string>', 'URL of the repo')
+  .requiredOption('-m, --message <string>', 'Message to send')
+  .requiredOption('-c, --color <string>', ' Color of the message', 'Random')
+  .requiredOption(
+    '-d, --dry-run <bool>',
+    'If enabled, a message will be printed to console instead of sending it to Discord',
     false
   )
 
 program.parse()
 
 const main = async () => {
-  const options = program.opts()
-  const isDryRun = !!options.dryRun
-  const sendMessage = isDryRun ? sendConsoleMessage : sendDiscordMessage
-
-  const message: AppMessage = {
-    message: 'Hello world,',
-    color: '#FF0000',
+  const { message, color, dryRun: isDryRun, repoUrl } = program.opts<AppArgs>()
+  const appMessage: AppMessage = {
+    message,
+    color: color as ColorResolvable,
+    repoUrl: repoUrl,
   }
-  await sendMessage(message)
+
+  const sendMessage = isDryRun ? sendConsoleMessage : sendDiscordMessage
+  await sendMessage(appMessage)
 }
 
 main()

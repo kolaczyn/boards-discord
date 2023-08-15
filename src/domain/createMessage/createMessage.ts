@@ -1,10 +1,9 @@
 import { EmbedBuilder } from 'discord.js'
 import { AppMessage } from '../../types'
 
-export const createMessage = ({ message, color }: AppMessage) => {
-  return new EmbedBuilder()
+export const createMessage = ({ message, color, repoUrl }: AppMessage) =>
+  new EmbedBuilder()
     .setTitle(message)
     .setDescription('Hello world')
-    .setURL('https://boards.kolaczyn.com')
+    .setURL(repoUrl)
     .setColor(color)
-}
