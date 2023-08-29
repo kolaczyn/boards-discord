@@ -23,7 +23,7 @@ const main = async () => {
       url: url,
     }))
 
-  const isDryRun = true
+  const isDryRun = false
   const sendMessage = isDryRun ? sendConsoleMessage : sendDiscordMessage
   await sendMessage([...notHealthyMessages, ...okMessages])
 }
