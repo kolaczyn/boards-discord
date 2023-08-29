@@ -3,8 +3,8 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 import { program } from 'commander'
-import { sendDiscordMessage } from './infrastructure/sendMessage/sendDiscordMessage'
-import { sendConsoleMessage } from './infrastructure/sendMessage/sendConsoleMessage'
+import { sendDiscordMessage } from './sendMessage/sendDiscordMessage'
+import { sendConsoleMessage } from './sendMessage/sendConsoleMessage'
 import { AppArgs, AppMessage } from './types'
 import { ColorResolvable } from 'discord.js'
 

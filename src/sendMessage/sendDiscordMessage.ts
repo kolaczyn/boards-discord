@@ -1,6 +1,6 @@
 import { WebhookClient } from 'discord.js'
-import { createMessage } from '../../domain/createMessage/createMessage'
-import { AppMessage } from '../../types'
+import { createMessage } from '../createMessage'
+import { AppMessage } from '../types'
 import { ISendMessage } from './sendMessage'
 
 const getEnvVars = () => {

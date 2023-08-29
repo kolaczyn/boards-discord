@@ -1,4 +1,4 @@
-import { AppMessage } from '../../types'
+import { AppMessage } from '../types'
 import { ISendMessage } from './sendMessage'
 
 export const sendConsoleMessage: ISendMessage = (
