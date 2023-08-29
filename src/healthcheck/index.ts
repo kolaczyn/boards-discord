@@ -18,17 +18,9 @@ const main = async () => {
       url: url,
     }))
 
-  const okMessages: AppMessage[] = urlsHealth
-    .filter(({ status }) => status === 'healthy')
-    .map(({ url }) => ({
-      message: `Site ${url} is healthy`,
-      color: '#00ff00',
-      url: url,
-    }))
-
   const isDryRun = false
   const sendMessage = isDryRun ? sendConsoleMessage : sendDiscordMessage
-  await sendMessage([...notHealthyMessages, ...okMessages])
+  await sendMessage(notHealthyMessages)
 }
 
 main()
