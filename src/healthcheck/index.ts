@@ -3,6 +3,9 @@ import { checkAllUrls } from './checkAllUrls'
 import { sendConsoleMessage } from '../sendMessage/sendConsoleMessage'
 import { sendDiscordMessage } from '../sendMessage/sendDiscordMessage'
 import { AppMessage } from '../types'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const main = async () => {
   const urlsHealth = await checkAllUrls(SITES_TO_CHECK)
