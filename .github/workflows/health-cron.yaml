@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: 0 * * * *
 
+env:
+  TOKEN: '${{ secrets.TOKEN }}'
+  ID: '${{ secrets.ID }}'
+
 jobs:
   health:
     runs-on: ubuntu-latest
