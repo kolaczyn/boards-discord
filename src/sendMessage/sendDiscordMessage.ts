@@ -16,12 +16,14 @@ const getEnvVars = () => {
 }
 
 /** @throws {Error} if env vars are not defined */
-export const sendDiscordMessage: ISendMessage = async (message: AppMessage) => {
+export const sendDiscordMessage: ISendMessage = async (
+  message: AppMessage[]
+) => {
   const { id, token } = getEnvVars()
 
   const webhookClient = new WebhookClient({ id, token })
 
   await webhookClient.send({
-    embeds: [createMessage(message)],
+    embeds: message.map(createMessage),
   })
 }

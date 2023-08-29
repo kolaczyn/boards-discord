@@ -29,11 +29,11 @@ const main = async () => {
   const appMessage: AppMessage = {
     message,
     color: color as ColorResolvable,
-    repoUrl: repoUrl,
+    url: repoUrl,
   }
 
   const sendMessage = isDryRun ? sendConsoleMessage : sendDiscordMessage
-  await sendMessage(appMessage)
+  await sendMessage([appMessage])
 }
 
 main()

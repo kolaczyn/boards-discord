@@ -10,5 +10,5 @@ export type AppArgs = {
 export type AppMessage = {
   message: string
   color: ColorResolvable
-  repoUrl: string
+  url: string
 }

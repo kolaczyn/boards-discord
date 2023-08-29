@@ -5,8 +5,9 @@
   "repository": "github:kolaczyn/xbox-promotion-checker",
   "version": "1.0.0",
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "start:dry": "ts-node src/index.ts --dry-run",
+    "start": "ts-node ./src/index.ts",
+    "start:health": "ts-node ./src/healthcheck/index.ts",
+    "start:dry": "ts-node ./src/index.ts --dry-run",
     "start:test": "npm run -- start -c '#009900' -m 'New release from Discord Bot' -r 'https://github.com/kolaczyn/boards-discord'",
     "format": "prettier -c src",
     "types": "tsc --noEmit",
